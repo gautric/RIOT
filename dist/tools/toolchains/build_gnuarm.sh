@@ -25,6 +25,9 @@ MAKE_THREADS=-j4
 DOWNLOADER=wget
 DOWNLOADER_OPTS="-nv -c"
 
+MD5=md5sum
+MD5_OPTS="-c -"
+
 #
 # Build targets
 #
@@ -139,7 +142,7 @@ download_file() {
     ${DOWNLOADER} ${DOWNLOADER_OPTS} $1/$2
 
     echo -n "Checking MD5 of "
-    echo "${3}  ${2}" | md5sum -c -
+    echo "${3}  ${2}" | ${MD5} ${MD5_OPTS}
 }
 
 check_space() {
